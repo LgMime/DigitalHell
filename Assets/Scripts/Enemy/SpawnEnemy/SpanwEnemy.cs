@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SpanwEnemy : MonoBehaviour
@@ -6,15 +7,24 @@ public class SpanwEnemy : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject[] spawnPoints;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float spawnInterval = 2f;
+    private void Start()
     {
-        
+        StartCoroutine(SpawnEnemyRoutine(spawnInterval));
     }
-
-    // Update is called once per frame
-    void Update()
+    private IEnumerator SpawnEnemyRoutine(float time)
     {
-        
+        while (true)
+        {
+            yield return new WaitForSeconds(time);
+            Spawnenemy();
+        }
+    }
+    private void Spawnenemy()
+    {
+        var randomIndex = Random.Range(0, spawnPoints.Length);
+        Vector3 spawnPos = spawnPoints[randomIndex].transform.position;
+        Vector3 spawnPosZeroZ = new Vector3(spawnPos.x, spawnPos.y, 0);
+        Instantiate(enemyPrefab, spawnPosZeroZ, Quaternion.identity);
     }
 }
