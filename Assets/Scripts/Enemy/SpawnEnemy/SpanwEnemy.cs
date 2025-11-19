@@ -26,5 +26,6 @@ public class SpanwEnemy : MonoBehaviour
         Vector3 spawnPos = spawnPoints[randomIndex].transform.position;
         Vector3 spawnPosZeroZ = new Vector3(spawnPos.x, spawnPos.y, 0);
         Instantiate(enemyPrefab, spawnPosZeroZ, Quaternion.identity);
+
     }
 }

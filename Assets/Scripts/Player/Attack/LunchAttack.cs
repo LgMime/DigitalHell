@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class LunchAttack : MonoBehaviour
 {
-    private float speed;
-    private float damage;
+    private float _attackSpeed;
+    private float _damage;
     public Vector3 targetPosition;
     private bool TargetSet = false;
 
@@ -12,14 +12,18 @@ public class LunchAttack : MonoBehaviour
     {
         targetPosition = pos;
         TargetSet = true;
-        speed = bulletType.speed;
-        damage = bulletType.damage;
+        _attackSpeed = bulletType.speed;
+        _damage = bulletType.damage;
 
     }
     private void Update()
     {
         if (!TargetSet) return;
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, _attackSpeed * Time.deltaTime);
+        if(Vector3.Distance(transform.position, targetPosition) < 0.1f)
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,10 +32,12 @@ public class LunchAttack : MonoBehaviour
             ITakeDamageEnemy enemy = collision.gameObject.GetComponent<ITakeDamageEnemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(_damage);
             }
             Destroy(gameObject);
+
         }
+
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);

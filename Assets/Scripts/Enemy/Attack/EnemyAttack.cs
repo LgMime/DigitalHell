@@ -7,7 +7,8 @@ public class EnemyAttack : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Player.Instance.health -= GetComponent<Enemy>().Damage;
+            int damge = GetComponent<Enemy>().Damage; 
+            TakeDamagePlayer.Instance.PlayerTakeDamage(damge);
         }
     }
 }

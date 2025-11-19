@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class Movement : MonoBehaviour
     {
         Vector2 moveVector = controls.Player.Move.ReadValue<Vector2>(); // я таке понимаю что тут я взял две оси 
         Vector3 move = new Vector3(moveVector.x, moveVector.y, 0); // и преобразовал в вектор 3д
-        transform.position += move * _player.speed * Time.fixedDeltaTime; // и умножил на скорость и время
+        transform.position += move * _player.MoveSpeed * Time.fixedDeltaTime; // и умножил на скорость и время
 
 
     }

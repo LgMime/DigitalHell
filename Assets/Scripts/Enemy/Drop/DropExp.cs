@@ -12,7 +12,6 @@ public class DropExp : MonoBehaviour
 
     public void Drop()
     {
-        
         Instantiate(ExpPrefab, transform.position, Quaternion.identity);
     }
 }

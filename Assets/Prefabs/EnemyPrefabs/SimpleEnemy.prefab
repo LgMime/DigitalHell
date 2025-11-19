@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -7810167959185197542}
   - component: {fileID: -2911530720427191878}
   - component: {fileID: 3273893148529870855}
+  - component: {fileID: -6215112988164140577}
   m_Layer: 0
   m_Name: SimpleEnemy
   m_TagString: Enemy
@@ -182,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6589f806b6f8d7547903cae149ea5b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveToPlayer
-  enemy: {fileID: 11400000, guid: 38aefe673c096164c9ffec65f14589f9, type: 2}
+  enemy: {fileID: 0}
 --- !u!114 &-6914947093013508721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd60278917ebed439c2c8296dc81254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDie
-  enemy: {fileID: 11400000, guid: 38aefe673c096164c9ffec65f14589f9, type: 2}
+  enemy: {fileID: 0}
 --- !u!114 &-2911530720427191878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,3 +238,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DropExp
   ExpPrefab: {fileID: 5577718148660741191, guid: 6877ff3b89f2c3340acda5d2736a86a5, type: 3}
+--- !u!114 &-6215112988164140577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477887041893445277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 463209c591ae9274a897c17016663f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DropHeal
+  HealthPrefab: {fileID: 5577718148660741191, guid: f88f87b8cdfd1904e897e0353ec6156e, type: 3}
+  dropChance: 0.2
