@@ -1916,8 +1916,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1026950424}
   - component: {fileID: 1026950426}
-  - component: {fileID: 1026950425}
   - component: {fileID: 1026950427}
+  - component: {fileID: 1026950429}
+  - component: {fileID: 1026950430}
+  - component: {fileID: 1026950431}
+  - component: {fileID: 1026950432}
   m_Layer: 0
   m_Name: Base Attack Spawn & Lunch
   m_TagString: Untagged
@@ -1940,18 +1943,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1077490145}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1026950425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026950423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb8dc741e70f1f343abbc22e21d53f09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpawnBaseAt
 --- !u!114 &1026950426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1977,9 +1968,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ef182c2fdb8514b9298a810306b08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackManager
-  spawnBaseAt: {fileID: 1026950425}
+  spawnBaseAt: {fileID: 1026950429}
   bulletData: {fileID: 11400000, guid: 62072348bce6b80479208137224409dd, type: 2}
   autoFire: 1
+--- !u!114 &1026950429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026950423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d761a22ddccbc429f5a75f0c52ba01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletSpawn
+--- !u!114 &1026950430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026950423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7cd53a0d604934199ae53374e48aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletRotate
+--- !u!114 &1026950431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026950423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b711cdcff21a5e54c8d7598c052b7e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GetEnemyPossition
+--- !u!114 &1026950432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026950423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b059b4c519502b4e80ff9e94746a1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SetEnemy
+  bullet: {fileID: 0}
+  bulletType: {fileID: 11400000, guid: 62072348bce6b80479208137224409dd, type: 2}
+  getEnemyPossition: {fileID: 1026950431}
 --- !u!1 &1077490144
 GameObject:
   m_ObjectHideFlags: 0

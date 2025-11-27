@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6942837161115474330}
   - component: {fileID: 4737363284471896119}
   - component: {fileID: -7868046976235480815}
+  - component: {fileID: -5745564757004174053}
   m_Layer: 0
   m_Name: PBaseAttack
   m_TagString: Untagged
@@ -142,3 +143,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LunchAttack
   targetPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &-5745564757004174053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108077789375248163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b059b4c519502b4e80ff9e94746a1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SetEnemy
+  bullet: {fileID: 0}
+  bulletType: {fileID: 11400000, guid: 62072348bce6b80479208137224409dd, type: 2}

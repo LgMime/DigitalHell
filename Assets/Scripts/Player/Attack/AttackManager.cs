@@ -4,7 +4,7 @@ using UnityEngine;
 public class AttackManager : MonoBehaviour
 {
     [SerializeField]
-    private SpawnBullet spawnBaseAt;
+    private BulletSpawn spawnBaseAt;
     [SerializeField]
     private BulletData bulletData;
     [SerializeField] 
@@ -12,7 +12,7 @@ public class AttackManager : MonoBehaviour
     private void Start()
     {
         if (autoFire)
-            StartCoroutine(spawnBaseAt.CalculateRotate(bulletData));
+            StartCoroutine(spawnBaseAt.SpawnBullet(bulletData));
     }
     private void OnDisable()
     {

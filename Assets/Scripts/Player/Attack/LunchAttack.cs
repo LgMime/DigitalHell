@@ -8,6 +8,7 @@ public class LunchAttack : MonoBehaviour
     public Vector3 targetPosition;
     private bool TargetSet = false;
 
+
     public void SetTaregt(Vector3 pos, BulletData bulletType)
     {
         targetPosition = pos;
