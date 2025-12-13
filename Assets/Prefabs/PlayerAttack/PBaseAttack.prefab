@@ -156,4 +156,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SetEnemy
   bullet: {fileID: 0}
-  bulletType: {fileID: 11400000, guid: 62072348bce6b80479208137224409dd, type: 2}
+  bulletType: {fileID: 11400000, guid: a265c6e227b0c1a4ab64ab13d395cba9, type: 2}

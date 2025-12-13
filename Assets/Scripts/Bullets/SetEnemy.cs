@@ -2,19 +2,12 @@ using UnityEngine;
 
 public class SetEnemy : MonoBehaviour
 {
-    public static SetEnemy Instance { get; private set; }
     public GameObject bullet;
     public BulletData bulletType;
 
-
     private void Awake()
     {
-        bullet = gameObject;
-      
-        if (Instance == null)
-            Instance = this;   
-        else 
-            Destroy(gameObject);     
+        bullet = gameObject;    
     }
     private void Start()
     {
@@ -22,8 +15,12 @@ public class SetEnemy : MonoBehaviour
     }
     public void SetEnemyTarget()
     {
-        Vector3 pos = GetEnemyPossition.Instance.GetEnemy().position;    
+       //game crashed when enemy die but skill try to set the died enemy
+        Transform enemyTransform = GetEnemyPossition.Instance.GetEnemy();   
+        if (enemyTransform == null) return;
+        Vector3 pos = enemyTransform.position;
         LunchAttack lunchAttack = bullet.GetComponent<LunchAttack>();
+        
         if (lunchAttack != null)
         {
             lunchAttack.SetTaregt(pos, bulletType);

@@ -23,6 +23,19 @@ public class BulletRotate : MonoBehaviour
    
     public Quaternion GetRotation()
     {
+
+        if (setEnemy == null) return Quaternion.identity;
+
+        Transform target = setEnemy.GetEnemy();
+
+        // 2. ВОТ ЗДЕСЬ БЫЛА ОШИБКА:
+        // Если враг умер (target == null), мы не пытаемся взять его .position
+        if (target == null)
+        {
+            // Возвращаем "нулевой" поворот (или поворот игрока), чтобы игра не ломалась
+            return Quaternion.identity;
+        }
+
         Vector3 PlayerPos = Player.Instance.transform.position;
         Vector3 direction = (setEnemy.GetEnemy().position - PlayerPos).normalized;
 

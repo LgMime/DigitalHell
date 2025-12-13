@@ -38,11 +38,6 @@ public class LunchAttack : MonoBehaviour
             Destroy(gameObject);
 
         }
-
-        else if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            Destroy(gameObject);
-        }
     }
 }
 

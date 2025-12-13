@@ -6,16 +6,18 @@ public class AttackManager : MonoBehaviour
     [SerializeField]
     private BulletSpawn spawnBaseAt;
     [SerializeField]
+    private SpawnTimer spawnTimer;
+    [SerializeField]
     private BulletData bulletData;
     [SerializeField] 
     private bool autoFire = true;
     private void Start()
     {
         if (autoFire)
-            StartCoroutine(spawnBaseAt.SpawnBullet(bulletData));
+            StartCoroutine(spawnTimer.StartSpawnTimer(bulletData, spawnBaseAt));
     }
     private void OnDisable()
     {
-        spawnBaseAt.StopShooting();
+        spawnTimer.StopShooting();
     }
 }

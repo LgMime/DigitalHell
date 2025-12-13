@@ -21,7 +21,11 @@ public class GetEnemyPossition : MonoBehaviour
     {
         if (listEnemyEntry.EnemyEntry.Count != 0 && listEnemyEntry != null)
         {
-            return listEnemyEntry.EnemyEntry[0].transform;
+            listEnemyEntry.EnemyEntry.RemoveAll(item => item == null);
+            if (listEnemyEntry.EnemyEntry.Count >0)
+            {
+                return listEnemyEntry.EnemyEntry[0].transform;
+            }
         }
         return null;
     }
