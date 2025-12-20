@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SpanwEnemy : MonoBehaviour
 {
-
+    //ToDo сделать лист врагов и спавнить старый тип врага и нововый в зависимости от времени игры
     public GameObject enemyPrefab;
     public GameObject[] spawnPoints;
 
