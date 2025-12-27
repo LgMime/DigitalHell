@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDie
   enemy: {fileID: 0}
+  _destroyDelay: 1
 --- !u!114 &5615601849902626309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   currentPos: {x: 0, y: 0, z: 0}
   health: 150
-  speed: 2
+  speed: 1
   Damage: 5
 --- !u!114 &1053818448095295364
 MonoBehaviour:

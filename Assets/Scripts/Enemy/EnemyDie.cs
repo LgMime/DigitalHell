@@ -6,7 +6,7 @@ public class EnemyDie : MonoBehaviour, ITakeDamageEnemy
     public Enemy enemy;
     public event System.Action OnDie;
 
-    [SerializeField] private float _destroyDelay = 0.3f;
+    [SerializeField] private float _destroyDelay = 0.25f;
     private Animator _animator;
     private bool _isDead = false;
 

@@ -21,16 +21,16 @@ MonoBehaviour:
     spawnInterval: 3
   - waveName: Medium
     enemyPrefab: {fileID: 7707203798715407063, guid: 5cbb87f5d59f3de4394a2c0268dc2214, type: 3}
-    waveStart: 0
-    waveEnd: 240
+    waveStart: 240
+    waveEnd: 340
     amountPerBurst: 3
     spawnInterval: 3
-  - waveName: 
+  - waveName: hard
     enemyPrefab: {fileID: 0}
-    waveStart: 0
-    waveEnd: 0
-    amountPerBurst: 0
-    spawnInterval: 0
+    waveStart: 340
+    waveEnd: 5000
+    amountPerBurst: 3
+    spawnInterval: 3
   - waveName: 
     enemyPrefab: {fileID: 0}
     waveStart: 0

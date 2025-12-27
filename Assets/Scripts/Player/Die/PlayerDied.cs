@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerDied : MonoBehaviour
 {
-    [SerializeField] private float _delayBeforeRestart = 2.0f; // Время ожидания в секундах
+    [SerializeField] private float _delayBeforeRestart = 5f; // Время ожидания в секундах
     private bool _isDead = false; // Флаг, чтобы умереть только один раз
     private Animator _animator; // Ссылка на аниматор
     private void Awake()
@@ -37,6 +37,13 @@ public class PlayerDied : MonoBehaviour
         yield return new WaitForSeconds(_delayBeforeRestart);
 
         // 3. Загружаем сцену
+        if (Player.Instance != null)
+        {
+            Destroy(Player.Instance.gameObject);
+        }
+        var expManager = FindAnyObjectByType<LvlManager>();
+        if (expManager != null) Destroy(expManager.gameObject);
+
         SceneManager.LoadScene("GameOverScene");
     }
 }
