@@ -14,6 +14,7 @@ public class MoveToPlayer : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (Player.Instance == null) return;
         transform.position = Vector3.MoveTowards(transform.position, Player.Instance.transform.position, enemy.speed * Time.deltaTime);
     }
 }

@@ -5,8 +5,7 @@ public class Timer : MonoBehaviour
 {
 
     public TextMeshProUGUI TextMeshPro;
-
-    public float AllSecund = 0f;//for dificult
+    public static Timer Instance;
 
     //for ui
     public float Secund = 0f;
@@ -24,7 +23,6 @@ public class Timer : MonoBehaviour
     public void Update()
     {
         Secund += Time.deltaTime;
-        AllSecund += Time.deltaTime;
         MinutConvert();
         TextMeshPro.text = result;
     }

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9558c370b51d7f41b05c87e3957b675, type: 3}
+  m_Name: LevelData
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  enemyWaves:
+  - waveName: Simple
+    enemyPrefab: {fileID: 6477887041893445277, guid: 0ea48ee1a668bed49bd8c7ef156037ba, type: 3}
+    waveStart: 0
+    waveEnd: 240
+    amountPerBurst: 5
+    spawnInterval: 3
+  - waveName: Medium
+    enemyPrefab: {fileID: 7707203798715407063, guid: 5cbb87f5d59f3de4394a2c0268dc2214, type: 3}
+    waveStart: 0
+    waveEnd: 240
+    amountPerBurst: 3
+    spawnInterval: 3
+  - waveName: 
+    enemyPrefab: {fileID: 0}
+    waveStart: 0
+    waveEnd: 0
+    amountPerBurst: 0
+    spawnInterval: 0
+  - waveName: 
+    enemyPrefab: {fileID: 0}
+    waveStart: 0
+    waveEnd: 0
+    amountPerBurst: 0
+    spawnInterval: 0
+  - waveName: 
+    enemyPrefab: {fileID: 0}
+    waveStart: 0
+    waveEnd: 0
+    amountPerBurst: 0
+    spawnInterval: 0

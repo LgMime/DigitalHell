@@ -1,10 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-
 public class DoubleShotSkill : BaseSkill
 {
-
     public override SkillType Type => SkillType.DoubleShot;
 
     private BulletSpawn bulletSpawn;
@@ -13,38 +11,47 @@ public class DoubleShotSkill : BaseSkill
     [SerializeField]
     private float delayBetweenShots = 0.15f;
 
-
     private void Awake()
     {
         bulletSpawn = GetComponentInParent<BulletSpawn>();
-
-        // ПРОВЕРКА 1: Нашли ли мы спавнер?
         if (bulletSpawn == null) Debug.LogError("ОШИБКА: DoubleShotSkill не нашел BulletSpawn в родителях!");
     }
 
     protected override void UseSkill()
     {
-        Debug.Log($"1. Скилл активирован! Текущий уровень: {level}");
         StartCoroutine(SpawnRoutine());
     }
 
     private IEnumerator SpawnRoutine()
     {
-        int bulletsToSpawn = level;
-
+        int bulletsToSpawn = level; // Или фиксированное число, как у тебя задумано
 
         for (int i = 0; i < bulletsToSpawn; i++)
         {
-            yield return new WaitForSeconds(delayBetweenShots);
-
             if (bulletSpawn != null)
             {
-                bulletSpawn.SpawnBullet(bulletData);
+                // 1. Ищем цель ПЕРЕД каждым выстрелом
+                Vector3 targetPosition = transform.position + transform.up * 10f; // Дефолтная позиция
+
+                if (GetEnemyPossition.Instance != null)
+                {
+                    Transform enemy = GetEnemyPossition.Instance.GetEnemy();
+                    if (enemy != null)
+                    {
+                        targetPosition = enemy.position;
+                    }
+                }
+
+                // 2. Стреляем в найденную позицию
+                bulletSpawn.SpawnBullet(bulletData, targetPosition);
             }
             else
             {
                 Debug.LogError("ОШИБКА: bulletSpawn == null, стрелять нечем!");
             }
+
+            // Ждем перед следующим выстрелом
+            yield return new WaitForSeconds(delayBetweenShots);
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿namespace Assets.Scripts.Enemy
+﻿
+public interface ITakeDamageEnemy
 {
-    public interface ITakeDamageEnemy
-    {
-        void TakeDamage(float damage);
-    }
+    void TakeDamage(float damage);
 }
+
