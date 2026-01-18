@@ -7,8 +7,10 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; } // Статическая переменная (ссылка на единственный экземпляр) 
 
     //public Vector3 CurrentPos;
+    
+
+
     [Header("Stats")]
-    public int Damage = 10;
     public int Health = 100;
     public int MaxHealth = 250;
     public float AttackSpeed = 1.0f;

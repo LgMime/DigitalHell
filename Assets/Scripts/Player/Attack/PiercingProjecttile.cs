@@ -12,6 +12,8 @@ public class PiercingProjecttile : ProjectileBase
         int id = obj.GetInstanceID();
         if (hitEnemy.Contains(id)) return;
 
+       
+        TryKnockback(obj);
         enemy.TakeDamage(damage);
         currentPiercingCount++;
 

@@ -13,12 +13,11 @@ public class ChooseCard : MonoBehaviour
     public float MoveSpeed;
     public void OnButtonClick()
     {
-        Player.Instance.Damage += DamageAmount;
         Player.Instance.Health += HealthAmount;
         Player.Instance.MaxHealth += MaxHealth;
         Player.Instance.AttackSpeed += AttackSpeed;
-        Player.Instance.Range += Range;
-        Player.Instance.ExpRange += ExpRange;
+        IncreaseRange.Instace.Increase(Range);
+       // IncreaseExpRange.Instace.Increase(ExpRange);
         Player.Instance.MoveSpeed += MoveSpeed;
         SpawnUpgradeMenu.Instance.CloseUpgradeMenu();
     }

@@ -4,8 +4,7 @@ public interface ISkill
 {
     SkillType Type { get; }
     string Name { get; }
-    bool Enabled { get; }
-    void ActivateSkill();
+    bool IsActive { get; }
     void SkillUpgrade();
 }
 

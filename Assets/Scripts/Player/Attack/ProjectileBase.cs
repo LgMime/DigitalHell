@@ -3,16 +3,20 @@ using UnityEngine;
 
 public abstract class ProjectileBase : MonoBehaviour
 {
+    [Header("Projectail settings")]
     protected float damage;      // protected - значит "дети" видят эту переменную
+    protected float knockbackForce;
     protected float speed;
+
     protected Vector3 flightDirection;
     protected bool isLaunched = false;
     [SerializeField] protected float lifeTime = 5f;
-    public virtual void Launch(Vector3 targetPos, float spd, float dmg)
+    public virtual void Launch(Vector3 targetPos, float spd, float dmg, float knockbackVal)
     {
         flightDirection = (targetPos - transform.position).normalized;
         speed = spd;
         damage = dmg;
+        knockbackForce = knockbackVal;
         isLaunched = true;
 
         float angle = Mathf.Atan2(flightDirection.y, flightDirection.x) * Mathf.Rad2Deg;
@@ -20,6 +24,13 @@ public abstract class ProjectileBase : MonoBehaviour
 
         isLaunched = true;
         StartCoroutine(LifeTimeTimer());
+    }
+    protected void TryKnockback(GameObject target)
+    {
+        if (target.TryGetComponent(out IKnockback knockback))
+        {
+            knockback.ApllyKnockback(knockbackForce);
+        }
     }
     protected void Deactivate()
     {

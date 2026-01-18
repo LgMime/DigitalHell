@@ -1,61 +1,75 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnTimer : MonoBehaviour
 {
     public event System.Action OnShoot;
 
-    private ListEnemyEntry listEnemyEntry;
-    private Coroutine attackRoutine;
 
-    private void Awake()
+    private Dictionary<BaseSkill, Coroutine> _activeWeapon = new Dictionary<BaseSkill, Coroutine>();
+    private bool _canShoot = false;
+
+    private void OnEnable()
     {
-        listEnemyEntry = GetComponentInParent<ListEnemyEntry>();
+        ListEnemyEntry.HasEnemy += HandleEnemyState;
     }
-
+    private void OnDisable()
+    {
+        ListEnemyEntry.HasEnemy -= HandleEnemyState;
+    }
+    private void HandleEnemyState(bool hasEnemies)
+    {
+        _canShoot = hasEnemies;
+    }
     public void StopShooting()
     {
-        if (attackRoutine != null)
+        foreach (var coroutine in _activeWeapon.Values)
         {
-            StopCoroutine(attackRoutine);
-            attackRoutine = null;
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+            }
+        }
+        _activeWeapon.Clear();
+    }
+
+    public void UpdateShooting(List<BaseSkill> allSkills, BulletSpawn spawner)
+    {
+        foreach (var skill in allSkills)
+        {
+            if (_activeWeapon.ContainsKey(skill)) continue;
+
+            Coroutine runShoot = StartCoroutine(TimeToAttack(skill, spawner));
+            _activeWeapon.Add(skill, runShoot);
         }
     }
 
-    public IEnumerator StartSpawnTimer(BulletData data, BulletSpawn bulletSpawn)
+    public IEnumerator TimeToAttack(BaseSkill skill, BulletSpawn spawner)
     {
         while (true)
         {
-            // Проверяем, есть ли враги в списке
-            if (listEnemyEntry != null && listEnemyEntry.EnemyEntry.Count != 0)
-            {
-                // 1. Пытаемся получить врага через твой синглтон
-                Transform targetTransform = null;
-                
-                if (GetEnemyPossition.Instance != null)
-                {
-                    targetTransform = GetEnemyPossition.Instance.GetEnemy();
-                }
 
-                // 2. ВАЖНО: Проверяем на null ДО того, как берем .position
-                if (targetTransform != null)
-                {
-                    // Враг жив! Передаем его позицию в спавнер
-                    bulletSpawn.SpawnBullet(data, targetTransform.position);
-                    
-                    OnShoot?.Invoke();
-                    yield return new WaitForSeconds(data.cooldown);
-                }
-                else
-                {
-                    // Враг был в списке, но GetEnemy вернул null (например, он только что умер)
-                    // Ждем кадр, чтобы не зависнуть, и ищем нового
-                    yield return null; 
-                }
-            }          
-            else
+            yield return new WaitForSeconds(skill.Cooldown);
+
+            if (!_canShoot)
             {
-                yield return new WaitForSeconds(0.1f);          
+                yield return new WaitUntil(() => _canShoot);
+            }
+            if (skill.IsActive)
+            {
+                for (int i = 0; i < skill.BurstsCount; i++)
+                {
+                    if (_canShoot)
+                    {
+                        skill.Attack(spawner);
+                        OnShoot?.Invoke();
+                    }
+
+                    if (i < skill.BurstsCount - 1)
+                        yield return new WaitForSeconds(skill.BurstDelay);
+
+                }
             }
         }
     }

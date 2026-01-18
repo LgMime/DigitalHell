@@ -1,69 +1,73 @@
 using UnityEngine;
-using System.Collections; // Обязательно для IEnumerator
+using System.Collections;
+using System;
 
-public class EnemyDie : MonoBehaviour, ITakeDamageEnemy
+public class EnemyDie : MonoBehaviour
 {
-    public Enemy enemy;
-    public event System.Action OnDie;
+    public event Action OnDie; // Событие для выпадения опыта
 
-    [SerializeField] private float _destroyDelay = 0.25f;
+    [Header("Настройки")]
+    [SerializeField] private float _destroyDelay = 1f; // ВРЕМЯ ЗАДЕРЖКИ
+    [SerializeField] private HpDecrease _healthScript;
+
     private Animator _animator;
-    private bool _isDead = false;
-
-    // Кэшируем ссылку на движение, чтобы не искать её каждый раз
     private MoveToPlayer _movementScript;
     private Collider2D _collider;
+    private Rigidbody2D _rb2d;
 
     private void Awake()
     {
-        enemy = GetComponent<Enemy>();
         _animator = GetComponentInChildren<Animator>();
-        _movementScript = GetComponent<MoveToPlayer>(); // Получаем твой скрипт
+        _movementScript = GetComponent<MoveToPlayer>();
         _collider = GetComponent<Collider2D>();
+        _rb2d = GetComponent<Rigidbody2D>();
+        // Автопоиск скрипта здоровья
+        if (_healthScript == null) _healthScript = GetComponent<HpDecrease>();
     }
 
-    // Если враги переиспользуются (Object Pooling), нужно сбрасывать флаг при включении
     private void OnEnable()
     {
-        _isDead = false;
-
-        // 1. Включаем коллайдер обратно (для следующего спавна)
+        // Восстанавливаем врага при респавне
+        if (_animator != null) _animator.Rebind();
         if (_collider != null) _collider.enabled = true;
-
-        // 2. ВАЖНО: Включаем скрипт движения обратно!
-        // Иначе возрожденный враг будет стоять на месте.
         if (_movementScript != null) _movementScript.enabled = true;
+
+        if (_healthScript != null) _healthScript.EnemyDoDie += StartDeathSequence;
     }
 
-    public void TakeDamage(float damage)
+    private void OnDisable()
     {
-        if (_isDead) return; // Мертвые не получают урон
+        if (_healthScript != null) _healthScript.EnemyDoDie -= StartDeathSequence;
+    }
 
-        enemy.health -= damage;
-
-        if (enemy.health <= 0)
+    private void StartDeathSequence()
+    {
+        if (gameObject.activeInHierarchy)
         {
-            StartCoroutine(DieProcess());
+            OnDie?.Invoke(); // Дропаем опыт
+            StartCoroutine(DieRoutine());
         }
     }
 
-    private IEnumerator DieProcess()
+    private IEnumerator DieRoutine()
     {
-        _isDead = true;
 
-        OnDie?.Invoke();
-
+        if (_rb2d != null)
+        {
+            _rb2d.linearVelocity = Vector2.zero;
+            _rb2d.bodyType = RigidbodyType2D.Kinematic;
+        }
+        // 1. Запускаем анимацию
         if (_animator != null) _animator.SetTrigger("DoDie");
 
-        // 3. Отключаем физику
+        // 2. Отключаем скрипт движения и коллайдер
+        if (_movementScript != null){ _movementScript.StopKnockback(); _movementScript.enabled = false; }
         if (_collider != null) _collider.enabled = false;
 
-        // 4. Отключаем ТВОЙ скрипт движения
-        // Теперь враг мгновенно остановится и проиграет анимацию на месте
-        if (_movementScript != null) _movementScript.enabled = false;
-
+        // 3. Ждем (Убедись, что в Инспекторе Destroy Delay > 0)
         yield return new WaitForSeconds(_destroyDelay);
 
+        // 4. Исчезаем
         gameObject.SetActive(false);
     }
 }

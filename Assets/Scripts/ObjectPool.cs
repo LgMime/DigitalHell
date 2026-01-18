@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public static ObjectPool Instance;
+    public GameObject parentObject;
 
     [System.Serializable]
     public class Pool
@@ -18,6 +19,8 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
+        
+
         Instance = this;
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
         foreach (Pool pool in pools)
@@ -25,7 +28,7 @@ public class ObjectPool : MonoBehaviour
             Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {
-                GameObject obj = Instantiate(pool.prefab);
+                GameObject obj = Instantiate(pool.prefab, parentObject.transform);
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }

@@ -127,8 +127,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.14578287, y: 0.0033760795}
-  m_Size: {x: 0.3409132, y: 0.31165537}
+  m_Offset: {x: 0.101569295, y: 0.0033760848}
+  m_Size: {x: 0.43483904, y: 0.31165951}
   m_Direction: 1
 --- !u!114 &6982090237058399623
 MonoBehaviour:
@@ -142,6 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0bec4f8157f2d468e906e7b432d350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Standartprojectile
+  damage: 10
+  knockbackForce: 450
   lifeTime: 5
 --- !u!95 &1499748425359911673
 Animator:

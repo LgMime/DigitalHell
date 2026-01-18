@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -2911530720427191878}
   - component: {fileID: 3273893148529870855}
   - component: {fileID: -6215112988164140577}
+  - component: {fileID: -3090160052158984428}
   - component: {fileID: 3659819057590944069}
   m_Layer: 0
   m_Name: SimpleEnemy
@@ -157,11 +158,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_Mass: 4
+  m_LinearDamping: 1
+  m_AngularDamping: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a4c157db6dedaa94c9121909b2ef1821, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -185,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveToPlayer
   enemy: {fileID: 0}
+  ForceKnockback: 5
+  _defaultMass: 4
 --- !u!114 &-6914947093013508721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,8 +212,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd60278917ebed439c2c8296dc81254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDie
-  enemy: {fileID: 0}
   _destroyDelay: 1
+  _healthScript: {fileID: 0}
 --- !u!114 &-2911530720427191878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   currentPos: {x: 0, y: 0, z: 0}
-  health: 10
+  health: 15
   speed: 2
   Damage: 5
 --- !u!114 &3273893148529870855
@@ -254,6 +257,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DropHeal
   HealthPrefab: {fileID: 5577718148660741191, guid: f88f87b8cdfd1904e897e0353ec6156e, type: 3}
   dropChance: 0.2
+--- !u!114 &-3090160052158984428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477887041893445277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473ad24c1020c2342b4ee4bc6b11e2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HpDecrease
+  _enemyStats: {fileID: -2911530720427191878}
 --- !u!95 &3659819057590944069
 Animator:
   serializedVersion: 7

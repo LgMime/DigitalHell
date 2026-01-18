@@ -1,20 +1,74 @@
+using System.Collections;
 using UnityEngine;
 
-public class MoveToPlayer : MonoBehaviour
+public class MoveToPlayer : MonoBehaviour, IKnockback
 {
-    [SerializeField]
-    private Enemy enemy;
+    [SerializeField] private Enemy enemy;
+    private Rigidbody2D _rb;
+    private Transform _playerTransform;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private bool _isKnockback = false;
+    public Coroutine _isKnockbackCoroutine;
+    public float _defaultMass = 4f;
+
+    private void Awake()
     {
-      enemy = GetComponent<Enemy>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    private void Update()
+    private void Start()
     {
-        if (Player.Instance == null) return;
-        transform.position = Vector3.MoveTowards(transform.position, Player.Instance.transform.position, enemy.speed * Time.deltaTime);
+        if (enemy == null) enemy = GetComponent<Enemy>();
+        if (Player.Instance != null) _playerTransform = Player.Instance.transform;
+    }
+
+    private void FixedUpdate()
+    {
+        if (_isKnockback)
+        {
+            return;
+        }
+        if (_playerTransform != null)
+        {
+            // Просто двигаем врага к игроку
+            Vector2 direction = (_playerTransform.position - transform.position).normalized;
+            _rb.MovePosition(_rb.position + direction * enemy.speed * Time.deltaTime);
+        }
+
+    }
+    public void ApllyKnockback(float force)
+    {
+        if (_isKnockbackCoroutine != null)
+        {
+            StopCoroutine(_isKnockbackCoroutine);
+        }
+        _rb.mass = _defaultMass * 50f; // Обновляем массу на случай изменений
+        Vector2 knockbackDirection = (_rb.position - (Vector2)_playerTransform.position).normalized;
+
+        _rb.linearVelocity = Vector2.zero;
+        _rb.AddForce(knockbackDirection * force, ForceMode2D.Impulse);
+        _isKnockback = true;
+
+        _isKnockbackCoroutine = StartCoroutine(EndKnockback());
+    }
+    private IEnumerator EndKnockback()
+    {
+        yield return new WaitForSeconds(0.2f);
+        _rb.linearVelocity = Vector2.zero;
+        _isKnockback = false;
+    }
+    public void StopKnockback()
+    {
+        if (_isKnockbackCoroutine != null)
+        {
+            StopCoroutine(_isKnockbackCoroutine);
+            _rb.linearVelocity = Vector2.zero;
+        }
+        if (_rb != null)
+        {
+            _rb.mass = _defaultMass;
+            _rb.linearVelocity = Vector2.zero;
+        }
+        _isKnockback = false;
     }
 }

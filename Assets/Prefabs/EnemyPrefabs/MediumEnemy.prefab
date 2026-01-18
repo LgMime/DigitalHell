@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2082264949578264424}
   - component: {fileID: 1053818448095295364}
   - component: {fileID: -6418679258843794856}
+  - component: {fileID: -5146113658553638491}
   - component: {fileID: 2446757419443479446}
   m_Layer: 0
   m_Name: MediumEnemy
@@ -157,11 +158,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_Mass: 10
+  m_LinearDamping: 1
+  m_AngularDamping: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a4c157db6dedaa94c9121909b2ef1821, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -185,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MoveToPlayer
   enemy: {fileID: 0}
+  ForceKnockback: 2
+  _defaultMass: 10
 --- !u!114 &4258251857990522161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd60278917ebed439c2c8296dc81254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDie
-  enemy: {fileID: 0}
   _destroyDelay: 1
+  _healthScript: {fileID: 0}
 --- !u!114 &5615601849902626309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +257,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DropHeal
   HealthPrefab: {fileID: 5577718148660741191, guid: f88f87b8cdfd1904e897e0353ec6156e, type: 3}
   dropChance: 0.2
+--- !u!114 &-5146113658553638491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7707203798715407063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473ad24c1020c2342b4ee4bc6b11e2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HpDecrease
+  _enemyStats: {fileID: 0}
 --- !u!95 &2446757419443479446
 Animator:
   serializedVersion: 7

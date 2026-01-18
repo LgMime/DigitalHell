@@ -2,7 +2,7 @@
 public enum SkillType
 {
     None,
-    DoubleShot,
+    MainWeapon,
     Fireball
     //IceBlast,
     //LightningStrike

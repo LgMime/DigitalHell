@@ -7,10 +7,13 @@ public class WaveManager : MonoBehaviour
     private float _levelTimer = 0f;
 
     private float[] _spawnTimers;
+    [SerializeField] private Transform _playerTransform;
+    [SerializeField]private float _spawnRadius = 20f;
 
     private void Start()
     {
         _spawnTimers = new float[currentLvl.enemyWaves.Count];
+        _playerTransform = Player.Instance.transform;
     }
     private void Update()
     {
@@ -45,7 +48,7 @@ public class WaveManager : MonoBehaviour
     {
         // Простая логика: спавним за экраном
         Vector2 randomDir = Random.insideUnitCircle.normalized;
-        Vector3 playerPos = transform.position;// Предполагаем, спавнер на игроке
-        return playerPos + (Vector3)randomDir * 20f;// Радиус 20
+        Vector3 playerPos = _playerTransform.position;// Предполагаем, спавнер на игроке
+        return playerPos + (Vector3)randomDir * _spawnRadius;// Радиус 20
     }
 }

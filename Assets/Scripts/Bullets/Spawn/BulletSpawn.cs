@@ -7,32 +7,60 @@ public class BulletSpawn : MonoBehaviour
 
     private void Awake()
     {
-        bulletRotate = GetComponent<BulletRotate>();  
+        bulletRotate = GetComponent<BulletRotate>();
     }
 
     // Добавили аргумент targetPos - куда лететь
-    public void SpawnBullet(BulletData data, Vector3 targetPos)
+    public void FireOneShot(BulletData data)
     {
-        // Достаем пулю из пула
+        // 1. Проверяем, что данные пришли
+        if (data == null || data.BulletPrefab == null)
+        {
+            Debug.LogError("BulletSpawn: В BulletData нет префаба!");
+            return;
+        }
+
+        // 2. Сначала ищем врага (чтобы не спавнить пулю зря, если врагов нет)
+        Transform targetTransform = null;
+        if (GetEnemyPossition.Instance != null)
+        {
+            targetTransform = GetEnemyPossition.Instance.GetEnemy();
+        }
+
+        // Если врага нет — выходим
+        if (targetTransform == null) return;
+
+        // 3. Пытаемся достать пулю
+        string prefabName = data.BulletPrefab.name;
+
         GameObject bulletObj = ObjectPool.Instance.SpawnFromPool(
-            data.bulletPrefab.name, 
-            transform.position, 
+            prefabName,
+            transform.position,
             bulletRotate.GetRotation()
         );
 
-        // ВМЕСТО SetEnemy ищем наш новый базовый класс
-        // Это сработает и для StandartProjectile, и для PiercingProjectile
+        // --- ВАЖНАЯ ЗАЩИТА (Которой у тебя не было) ---
+        if (bulletObj == null)
+        {
+            Debug.LogError($"!!! ОШИБКА !!! ObjectPool вернул NULL.\n" +
+                           $"Он искал пул с именем: '{prefabName}'\n" +
+                           $"1. Проверь, нет ли пробелов внутри кавычек в ошибке.\n" +
+                           $"2. Проверь, что в ObjectPool есть пул с точно таким именем.\n" +
+                           $"3. Проверь, что Size у пула достаточно большой (поставь 50+).");
+            return; // Останавливаемся, чтобы игра не крашнулась
+        }
+        // ----------------------------------------------
+
+        // 4. Запускаем пулю
         ProjectileBase projectile = bulletObj.GetComponent<ProjectileBase>();
-        
+
         if (projectile != null)
         {
-            // Запускаем через новый метод Launch
-            // Передаем (Позиция, Скорость, Урон)
-            projectile.Launch(targetPos, data.speed, data.damage);
+            projectile.Launch(targetTransform.position, data.Speed, data.Damage, data.KnockbackForce);
         }
         else
         {
-            Debug.LogError("На префабе пули нет скрипта ProjectileBase (или наследника)!");
+            Debug.LogError($"На объекте '{bulletObj.name}' нет скрипта ProjectileBase!");
         }
     }
 }

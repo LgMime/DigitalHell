@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3059a8bf458b05a429e3ec28bca43868, type: 3}
   m_Name: Common
   m_EditorClassIdentifier: Assembly-CSharp::RarityData
-  ChanceWeight: 100
+  ChanceWeight: 0
   RarityPrefabConsole: {fileID: 0}
   RarityName: Common
   RarityColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}

@@ -18,7 +18,13 @@ public class HealPlayer : MonoBehaviour
     }
     public void Heal(int heal)
     {
-        Player.Instance.Health += heal;
+        if (Player.Instance.Health + heal > Player.Instance.MaxHealth)
+        {
+            Player.Instance.Health = Player.Instance.MaxHealth;
+            return;
+        }
+        else
+            Player.Instance.Health += heal;
     }
 }
 

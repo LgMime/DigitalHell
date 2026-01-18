@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41f37cb05265b743ab536fd14a2fb24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PiercingProjecttile
+  damage: 50
+  knockbackForce: 750
   lifeTime: 5
   maxPiercingCount: 3
 --- !u!70 &1464819163420623184
