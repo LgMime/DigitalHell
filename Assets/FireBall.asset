@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d64c77a7003a0743a57287e8880b203, type: 3}
   m_Name: FireBall
   m_EditorClassIdentifier: Assembly-CSharp::BulletData
-  bulletPrefab: {fileID: 5599402996413126976, guid: 6220af9a0ff3f2140860dabb4e766fe1, type: 3}
-  damage: 15
-  speed: 0.9
+  BulletPrefab: {fileID: 5599402996413126976, guid: 6220af9a0ff3f2140860dabb4e766fe1, type: 3}
+  MaxLevel: 5
+  Damage: 30
+  Speed: 1
   cooldown: 5
+  KnockbackForce: 800

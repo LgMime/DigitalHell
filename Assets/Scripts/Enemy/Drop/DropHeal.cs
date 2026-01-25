@@ -4,12 +4,12 @@ using UnityEngine;
 public class DropHeal : MonoBehaviour
 {
     public GameObject HealthPrefab;
-    private EnemyDie enemyDie;
+    private EnemyHealth enemyDie;
     [Range(0f, 1f)] public float dropChance = 0.2f;
     void Start()
     {
-        enemyDie = GetComponent<EnemyDie>();
-        enemyDie.OnDie += CallDrop;
+        enemyDie = GetComponent<EnemyHealth>();
+        enemyDie.OnDeath += CallDrop;
     }
 
     public void CallDrop()

@@ -21,5 +21,24 @@ public class MainWeapon : BaseSkill
     protected override void OnLevelUp()
     {
         Debug.Log($"DoubleShot skill upgraded to level {level}");
+        switch (level)
+        {
+            case 2:
+                bulletData.Damage += 5;
+                bulletData.Speed += 0.5f;
+                break;
+            case 3:
+                bulletData.Damage += 10;
+                bulletData.Speed += 0.5f;
+                break;
+            case 4:
+                bulletData.Damage += 15;
+                bulletData.Speed += 0.5f;
+                break;
+            case 5:
+                bulletData.Damage += 20;
+                bulletData.Speed += 0.5f;
+                break;
+        }
     }
 }

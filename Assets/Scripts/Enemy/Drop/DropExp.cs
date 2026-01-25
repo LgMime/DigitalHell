@@ -3,11 +3,11 @@ using UnityEngine;
 public class DropExp : MonoBehaviour
 {
     public GameObject ExpPrefab;
-    private EnemyDie enemyDie;
+    private EnemyHealth enemyDie;
     private void Start()
     {
-        enemyDie = GetComponent<EnemyDie>();
-        enemyDie.OnDie += Drop;
+        enemyDie = GetComponent<EnemyHealth>();
+        enemyDie.OnDeath += Drop;
     }
 
     public void Drop()

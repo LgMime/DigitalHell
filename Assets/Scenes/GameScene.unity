@@ -1000,6 +1000,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261359158}
   m_CullTransparentMesh: 1
+--- !u!1 &298481359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 298481361}
+  - component: {fileID: 298481360}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &298481360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298481359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf1c53794ab86d45b324725bc4483a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  _playerHealth: {fileID: 1351107920}
+  _restartDelay: 5
+--- !u!4 &298481361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298481359}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &314508443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3155,10 +3201,10 @@ GameObject:
   - component: {fileID: 1351107924}
   - component: {fileID: 1351107923}
   - component: {fileID: 1351107922}
-  - component: {fileID: 1351107921}
   - component: {fileID: 1351107920}
   - component: {fileID: 1351107919}
   - component: {fileID: 1351107918}
+  - component: {fileID: 1351107927}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3227,19 +3273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37a7c7d175e366478f7d78da523f859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDied
-  _delayBeforeRestart: 1
---- !u!114 &1351107921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351107917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce205998856ad6d46906d7226b251176, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TakeDamagePlayer
+  maxHealth: 0
+  currentHealth: 0
+  _isInvincible: 0
 --- !u!114 &1351107922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3264,13 +3300,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590902c9e320f8d4b820c397f51f54a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  Damage: 10
   Health: 250
   MaxHealth: 250
   AttackSpeed: 1
   Range: 2
   ExpRange: 3
   MoveSpeed: 5
+  InvincibilityDuration: 1
 --- !u!95 &1351107924
 Animator:
   serializedVersion: 7
@@ -3369,6 +3405,21 @@ Transform:
   - {fileID: 1677598801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1351107927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351107917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37a7c7d175e366478f7d78da523f859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 250
+  currentHealth: 250
+  _isInvincible: 0
 --- !u!1 &1358063556
 GameObject:
   m_ObjectHideFlags: 0
@@ -3912,8 +3963,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addeb37fea3c5224ba79aa27439f7b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthBar
-  healthText: {fileID: 1944722129}
-  healthBarImage: {fileID: 1881123321}
+  _healthText: {fileID: 1944722129}
+  _healthBarImage: {fileID: 1881123321}
 --- !u!1 &1542477901
 GameObject:
   m_ObjectHideFlags: 0
@@ -5008,3 +5059,4 @@ SceneRoots:
   - {fileID: 1972478292}
   - {fileID: 244458597}
   - {fileID: 2009465494}
+  - {fileID: 298481361}

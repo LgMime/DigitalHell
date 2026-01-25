@@ -1,33 +1,33 @@
-
-
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player Instance { get; private set; } // Статическая переменная (ссылка на единственный экземпляр) 
-
-    //public Vector3 CurrentPos;
-    
-
+    public static Player Instance { get; private set; } 
 
     [Header("Stats")]
-    public int Health = 100;
+    public int Health = 250;
     public int MaxHealth = 250;
     public float AttackSpeed = 1.0f;
     public float Range = 2.0f;
     public float ExpRange = 3.0f;
     public float MoveSpeed = 5.0f;
-    
+    public float InvincibilityDuration = 1.0f;
+
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            Instance = this; // Присваиваем ссылку на текущий экземпляр класса Player
+            Destroy(gameObject); // УБИВАЕТ ДУБЛИКАТ
+            return;
         }
-        else
-        {
-            Destroy(gameObject); // Уничтожаем дубликат, если он существует
-        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject); // СОХРАНЯЕТ МЕЖДУ СЦЕНАМИ
+    }
+    private void Start()
+    {
+        if (PlayerHealth.Instance != null)
+            PlayerHealth.Instance.SetMaxHealth(MaxHealth, true);
     }
 }

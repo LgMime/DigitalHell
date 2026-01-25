@@ -7,7 +7,7 @@ public class PiercingProjecttile : ProjectileBase
     private int currentPiercingCount = 0;
     protected List<int> hitEnemy = new List<int>();
 
-    protected override void OnHitEnemy(ITakeDamageEnemy enemy, GameObject obj)
+    protected override void OnHitEnemy(IDamageable enemy, GameObject obj)
     {
         int id = obj.GetInstanceID();
         if (hitEnemy.Contains(id)) return;

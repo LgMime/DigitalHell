@@ -6,15 +6,14 @@ public class HealPlayer : MonoBehaviour
     public static HealPlayer Instance { get; private set; }
     private void Awake()
     {
-        if (Instance == null)
+        // Если место занято - просто уходим.
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            return;
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+
+        Instance = this;
+        // DontDestroyOnLoad НЕ НУЖЕН (его делает Player.cs)
     }
     public void Heal(int heal)
     {

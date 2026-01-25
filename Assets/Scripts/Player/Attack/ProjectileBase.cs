@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class ProjectileBase : MonoBehaviour
 {
     [Header("Projectail settings")]
-    protected float damage;      // protected - значит "дети" вид€т эту переменную
+    protected float damage;      // protcted because we will use it in derived classes
     protected float knockbackForce;
     protected float speed;
 
@@ -50,16 +50,12 @@ public abstract class ProjectileBase : MonoBehaviour
     }
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if(damageable != null)
         {
-            if (collision.TryGetComponent(out ITakeDamageEnemy enemy))
-            {
-                // ћы не знаем, что делать при ударе.
-                // ћы говорим: "—ынок, мы врезались во врага, решай сам, что делать".
-                OnHitEnemy(enemy, collision.gameObject);
-            }
+            OnHitEnemy(damageable, collision.gameObject);
         }
     }
-    protected abstract void OnHitEnemy(ITakeDamageEnemy enemy, GameObject obj);
+    protected abstract void OnHitEnemy(IDamageable enemy, GameObject obj);
 }
 

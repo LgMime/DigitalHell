@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d64c77a7003a0743a57287e8880b203, type: 3}
   m_Name: BulletData
   m_EditorClassIdentifier: Assembly-CSharp::BulletData
-  bulletPrefab: {fileID: 6108077789375248163, guid: 3e33617549e519e47a8c7029683ef3e3, type: 3}
-  damage: 5
-  speed: 2
+  BulletPrefab: {fileID: 6108077789375248163, guid: 3e33617549e519e47a8c7029683ef3e3, type: 3}
+  MaxLevel: 5
+  Damage: 10
+  Speed: 2
   cooldown: 2
+  KnockbackForce: 450
