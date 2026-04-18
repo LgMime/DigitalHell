@@ -46,9 +46,9 @@ public class WaveManager : MonoBehaviour
 
     private Vector3 GetRandomPositionAroundPlayer()
     {
-        // Простая логика: спавним за экраном
+
         Vector2 randomDir = Random.insideUnitCircle.normalized;
-        Vector3 playerPos = _playerTransform.position;// Предполагаем, спавнер на игроке
-        return playerPos + (Vector3)randomDir * _spawnRadius;// Радиус 20
+        Vector3 playerPos = _playerTransform.position;
+        return playerPos + (Vector3)randomDir * _spawnRadius;// here we get a random direction and multiply it by the spawn radius to get a position around the player, then we add the player's position to it to get the final spawn position
     }
 }

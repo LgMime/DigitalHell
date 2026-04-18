@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public class HealPlayer : MonoBehaviour
+public class HealPlayer : BaseHealth
 {
     public static HealPlayer Instance { get; private set; }
     private void Awake()
@@ -11,19 +11,20 @@ public class HealPlayer : MonoBehaviour
         {
             return;
         }
-
         Instance = this;
         // DontDestroyOnLoad НЕ НУЖЕН (его делает Player.cs)
     }
+  
     public void Heal(int heal)
     {
-        if (Player.Instance.Health + heal > Player.Instance.MaxHealth)
+        if (currentHealth + heal > maxHealth)
         {
-            Player.Instance.Health = Player.Instance.MaxHealth;
+            currentHealth = maxHealth;
             return;
         }
         else
-            Player.Instance.Health += heal;
+            currentHealth += heal;
     }
+
 }
 

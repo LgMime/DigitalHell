@@ -5,7 +5,7 @@ public class UpgradeSkill : MonoBehaviour
 
     [SerializeField]
     private SkillType Skill;
-
+    public static event System.Action SkillWasUpgrade;
 
     public void OnClick()
     {
@@ -21,6 +21,8 @@ public class UpgradeSkill : MonoBehaviour
 
             // Закрываем меню
             SpawnUpgradeMenu.Instance.CloseUpgradeMenu();
+            SkillWasUpgrade?.Invoke();
+
         }
         else
         {

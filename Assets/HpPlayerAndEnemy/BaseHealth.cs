@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class BaseHealth: MonoBehaviour, IDamageable
 {
-    [SerializeField] protected float maxHealth;
-    [SerializeField] protected float currentHealth;
+    protected float maxHealth;
+     protected float currentHealth;
 
 
     public float current => currentHealth;

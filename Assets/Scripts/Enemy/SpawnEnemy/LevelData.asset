@@ -17,29 +17,29 @@ MonoBehaviour:
     enemyPrefab: {fileID: 6477887041893445277, guid: 0ea48ee1a668bed49bd8c7ef156037ba, type: 3}
     waveStart: 0
     waveEnd: 240
-    amountPerBurst: 2
+    amountPerBurst: 3
     spawnInterval: 4
   - waveName: Medium
     enemyPrefab: {fileID: 7707203798715407063, guid: 5cbb87f5d59f3de4394a2c0268dc2214, type: 3}
     waveStart: 240
     waveEnd: 340
-    amountPerBurst: 2
+    amountPerBurst: 3
     spawnInterval: 4
   - waveName: hard
     enemyPrefab: {fileID: 6477887041893445277, guid: 0ea48ee1a668bed49bd8c7ef156037ba, type: 3}
     waveStart: 340
     waveEnd: 5000
-    amountPerBurst: 2
+    amountPerBurst: 3
     spawnInterval: 3
   - waveName: 
     enemyPrefab: {fileID: 7707203798715407063, guid: 5cbb87f5d59f3de4394a2c0268dc2214, type: 3}
     waveStart: 340
     waveEnd: 5000
-    amountPerBurst: 2
+    amountPerBurst: 3
     spawnInterval: 3
-  - waveName: 
-    enemyPrefab: {fileID: 0}
-    waveStart: 0
-    waveEnd: 0
-    amountPerBurst: 0
-    spawnInterval: 0
+  - waveName: Simple
+    enemyPrefab: {fileID: 8475658256265099048, guid: 5aa9cf4bf1fbf354bb8e78c1b402a6f9, type: 3}
+    waveStart: 400
+    waveEnd: 240
+    amountPerBurst: 3
+    spawnInterval: 2

@@ -12,7 +12,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            int damage = _enemy.Damage;
+            int damage = _enemy.damage;
             PlayerHealth.Instance.TakeDamage(damage);
         }    
 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 36aedad6bd3fd244a82efe70073ccceb
+guid: 971d6431796e8d84e80d1aa4fa5d97b7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2381666591319648024
-    second: SpeedUpEpic_0
+      213: 4268725743633075257
+    second: SpeedUpEpic-export_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpeedUpEpic_0
+      name: SpeedUpEpic-export_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 817e50d65216d0120800000000000000
-      internalID: 2381666591319648024
+      spriteID: 93c80d8727f8d3b30800000000000000
+      internalID: 4268725743633075257
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SpeedUpEpic_0: 2381666591319648024
+      SpeedUpEpic-export_0: 4268725743633075257
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

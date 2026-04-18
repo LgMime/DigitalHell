@@ -10,27 +10,25 @@ public class BulletSpawn : MonoBehaviour
         bulletRotate = GetComponent<BulletRotate>();
     }
 
-    // Добавили аргумент targetPos - куда лететь
     public void FireOneShot(BulletData data)
     {
-        // 1. Проверяем, что данные пришли
         if (data == null || data.BulletPrefab == null)
         {
-            Debug.LogError("BulletSpawn: В BulletData нет префаба!");
+            Debug.LogError("BulletSpawn: Invalid data or missing prefab.");
             return;
         }
 
-        // 2. Сначала ищем врага (чтобы не спавнить пулю зря, если врагов нет)
+        // 2. First, check for an enemy (to avoid spawning a bullet unnecessarily if no enemies exist)
         Transform targetTransform = null;
         if (GetEnemyPossition.Instance != null)
         {
             targetTransform = GetEnemyPossition.Instance.GetEnemy();
         }
 
-        // Если врага нет — выходим
+        // If no enemy found, exit
         if (targetTransform == null) return;
 
-        // 3. Пытаемся достать пулю
+        // 3. Try to get a bullet from the pool
         string prefabName = data.BulletPrefab.name;
 
         GameObject bulletObj = ObjectPool.Instance.SpawnFromPool(
@@ -39,28 +37,28 @@ public class BulletSpawn : MonoBehaviour
             bulletRotate.GetRotation()
         );
 
-        // --- ВАЖНАЯ ЗАЩИТА (Которой у тебя не было) ---
+        // --- IMPORTANT SAFETY CHECK (Missing in previous version) ---
         if (bulletObj == null)
         {
-            Debug.LogError($"!!! ОШИБКА !!! ObjectPool вернул NULL.\n" +
-                           $"Он искал пул с именем: '{prefabName}'\n" +
-                           $"1. Проверь, нет ли пробелов внутри кавычек в ошибке.\n" +
-                           $"2. Проверь, что в ObjectPool есть пул с точно таким именем.\n" +
-                           $"3. Проверь, что Size у пула достаточно большой (поставь 50+).");
-            return; // Останавливаемся, чтобы игра не крашнулась
+            Debug.LogError($"!!! ERROR !!! ObjectPool returned NULL.\n" +
+                           $"It looked for a pool named: '{prefabName}'\n" +
+                           $"1. Check for extra spaces inside the quotes in this error.\n" +
+                           $"2. Verify that ObjectPool contains a pool with this EXACT name.\n" +
+                           $"3. Ensure the pool Size is large enough (try setting it to 50+).");
+            return; // Stop execution to prevent a crash
         }
-        // ----------------------------------------------
+        // ------------------------------------------------------------
 
-        // 4. Запускаем пулю
+        // 4. Launch the bullet
         ProjectileBase projectile = bulletObj.GetComponent<ProjectileBase>();
 
         if (projectile != null)
         {
-            projectile.Launch(targetTransform.position, data.Speed, data.Damage, data.KnockbackForce);
+            projectile.Launch(gameObject, targetTransform.position, data.Speed, data.Damage, data.KnockbackForce);
         }
         else
         {
-            Debug.LogError($"На объекте '{bulletObj.name}' нет скрипта ProjectileBase!");
+            Debug.LogError($"Object '{bulletObj.name}' is missing the ProjectileBase script!");
         }
     }
 }

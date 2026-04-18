@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 521b27eee6bcf2549b25671da2f2045f
+guid: 1866df6bddc9c8f4c920f21bbefd3f1d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5586851217284713736
-    second: RangeEpic_0
+      213: 6500858995436187163
+    second: RangeEpicexpport_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RangeEpic_0
+      name: RangeEpicexpport_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8f239c41b648772b0800000000000000
-      internalID: -5586851217284713736
+      spriteID: b1e60e530d0b73a50800000000000000
+      internalID: 6500858995436187163
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RangeEpic_0: -5586851217284713736
+      RangeEpicexpport_0: 6500858995436187163
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

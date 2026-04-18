@@ -3,8 +3,8 @@ public enum SkillType
 {
     None,
     MainWeapon,
-    Fireball
-    //IceBlast,
+    Fireball,
+    ElectroAura
     //LightningStrike
 }
 

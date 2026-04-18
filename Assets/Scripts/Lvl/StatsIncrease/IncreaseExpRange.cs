@@ -6,6 +6,7 @@ public class IncreaseExpRange : MonoBehaviour
     public static IncreaseExpRange Instace;
     private void Awake()
     {
+        expRange = GetComponent<CircleCollider2D>();
         Instace = this;
 
     }

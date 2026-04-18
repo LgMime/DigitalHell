@@ -103,6 +103,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -204,7 +205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0ef02dde045d20d41840facbfb251688, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e2f462c3f57e27c4282ff5a5e97f7d25, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -282,10 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2238cac2385f9145a340b65e3ffe2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChooseCard
-  DamageAmount: 0
   HealthAmount: 0
-  MaxHealth: 20
-  AttackSpeed: 0
+  MaxHealth: 1.5
   Range: 0
   ExpRange: 0
   MoveSpeed: 0

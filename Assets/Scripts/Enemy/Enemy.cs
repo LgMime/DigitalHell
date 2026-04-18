@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Vector3 currentPos;
-    public float health = 50; 
-    public float speed  = 3.0f;
-    public int Damage = 5;
+    [Header("Base Stats")]
+    public float health = 50;
+    public float speed = 3.0f;
+    public int damage = 5;
 
+    [Header("Knockback Settings")]
+    public float knockbackForce = 5f;
 }

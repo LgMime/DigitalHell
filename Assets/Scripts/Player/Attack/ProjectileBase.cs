@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public abstract class ProjectileBase : MonoBehaviour
 {
@@ -8,11 +9,15 @@ public abstract class ProjectileBase : MonoBehaviour
     protected float knockbackForce;
     protected float speed;
 
+    protected GameObject owner; // The entity that launched the projectile
+
     protected Vector3 flightDirection;
     protected bool isLaunched = false;
     [SerializeField] protected float lifeTime = 5f;
-    public virtual void Launch(Vector3 targetPos, float spd, float dmg, float knockbackVal)
+
+    public virtual void Launch(GameObject luncher, Vector3 targetPos, float spd, float dmg, float knockbackVal)
     {
+        owner = luncher;
         flightDirection = (targetPos - transform.position).normalized;
         speed = spd;
         damage = dmg;
@@ -25,6 +30,7 @@ public abstract class ProjectileBase : MonoBehaviour
         isLaunched = true;
         StartCoroutine(LifeTimeTimer());
     }
+
     protected void TryKnockback(GameObject target)
     {
         if (target.TryGetComponent(out IKnockback knockback))
@@ -32,26 +38,37 @@ public abstract class ProjectileBase : MonoBehaviour
             knockback.ApllyKnockback(knockbackForce);
         }
     }
+
     protected void Deactivate()
     {
         isLaunched = false;
         gameObject.SetActive(false);
-        // При выключении объекта Unity сама остановит корутину LifeTimeTimer
+
     }
+
     private IEnumerator LifeTimeTimer()
     {
         yield return new WaitForSeconds(lifeTime);
         Deactivate();
     }
+
     protected virtual void Update()
     {
         if (!isLaunched) return;
         transform.position += flightDirection * speed * Time.deltaTime;
     }
+
     protected void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject == owner)
+            return;
+
+        if (owner != null && collision.CompareTag(owner.tag))
+            return;
+
         IDamageable damageable = collision.GetComponent<IDamageable>();
-        if(damageable != null)
+
+        if (damageable != null)
         {
             OnHitEnemy(damageable, collision.gameObject);
         }

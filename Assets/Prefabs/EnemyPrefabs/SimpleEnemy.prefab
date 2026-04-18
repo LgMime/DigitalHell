@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 6687206318848682357}
   - component: {fileID: 966785627047294786}
   - component: {fileID: 3716040165374732531}
-  - component: {fileID: 1798556181699687581}
   - component: {fileID: -6914947093013508721}
   - component: {fileID: -2911530720427191878}
   - component: {fileID: 3273893148529870855}
   - component: {fileID: -6215112988164140577}
   - component: {fileID: 3659819057590944069}
   - component: {fileID: -107077291940434290}
+  - component: {fileID: 5743710834220709778}
   m_Layer: 0
   m_Name: SimpleEnemy
   m_TagString: Enemy
@@ -43,6 +43,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6687206318848682357
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,6 +89,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 06cf600ac9aa17049a23cc2bc419a881, type: 3}
   m_Color: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
   m_FlipX: 0
@@ -97,7 +99,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &966785627047294786
 BoxCollider2D:
@@ -172,20 +173,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1798556181699687581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6477887041893445277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6589f806b6f8d7547903cae149ea5b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MoveToPlayer
-  enemy: {fileID: 0}
-  _defaultMass: 4
 --- !u!114 &-6914947093013508721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +262,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e3fe619e4e39f346957e231875da2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 15
-  currentHealth: 10
   _destroyDelay: 1
   _enemyStats: {fileID: -2911530720427191878}
+--- !u!114 &5743710834220709778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477887041893445277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b8383f9461f63458cc1cd3e598fe43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  enemy: {fileID: -2911530720427191878}
+  _rb: {fileID: 3716040165374732531}
+  _playerTransform: {fileID: 0}
+  _defaultMass: 4

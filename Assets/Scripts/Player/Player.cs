@@ -5,9 +5,8 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; } 
 
     [Header("Stats")]
-    public int Health = 250;
-    public int MaxHealth = 250;
-    public float AttackSpeed = 1.0f;
+    public int Health = 15;
+    public float MaxHealth = 15;
     public float Range = 2.0f;
     public float ExpRange = 3.0f;
     public float MoveSpeed = 5.0f;
@@ -18,16 +17,10 @@ public class Player : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject); // ”¡»¬¿≈“ ƒ”¡À» ¿“
+            Destroy(gameObject); // Destroy the duplicate instance
             return;
         }
-
         Instance = this;
-        DontDestroyOnLoad(gameObject); // —Œ’–¿Õﬂ≈“ Ã≈∆ƒ” —÷≈Õ¿Ã»
-    }
-    private void Start()
-    {
-        if (PlayerHealth.Instance != null)
-            PlayerHealth.Instance.SetMaxHealth(MaxHealth, true);
+        DontDestroyOnLoad(gameObject); // Optional: Keep the player object across scenes
     }
 }
