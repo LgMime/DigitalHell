@@ -9,12 +9,15 @@ public class WaveManager : MonoBehaviour
     private float[] _spawnTimers;
     [SerializeField] private Transform _playerTransform;
     [SerializeField]private float _spawnRadius = 20f;
+    private bool[] _hasSpawnedSingle;
 
     private void Start()
     {
         _spawnTimers = new float[currentLvl.enemyWaves.Count];
+        _hasSpawnedSingle = new bool[currentLvl.enemyWaves.Count]; 
         _playerTransform = Player.Instance.transform;
     }
+
     private void Update()
     {
         _levelTimer += Time.deltaTime;
@@ -25,16 +28,25 @@ public class WaveManager : MonoBehaviour
 
             if (_levelTimer >= wave.waveStart && _levelTimer <= wave.waveEnd)
             {
+                if (wave.isSingleSpawn && _hasSpawnedSingle[i]) continue;
+
                 _spawnTimers[i] += Time.deltaTime;
-                if (_spawnTimers[i] >= wave.spawnInterval)
+
+                if (_spawnTimers[i] >= wave.spawnInterval || (wave.isSingleSpawn && !_hasSpawnedSingle[i]))
                 {
                     SpawnEmemies(wave);
                     _spawnTimers[i] = 0f;
+
+                    if (wave.isSingleSpawn)
+                    {
+                        _hasSpawnedSingle[i] = true; 
+                    }
                 }
             }
         }
 
     }
+
     private void SpawnEmemies(LevelData.EnemyWave wave)
     {
         for (int j = 0; j < wave.amountPerBurst; j++)

@@ -17,11 +17,12 @@ public class ElectroAura : AbstractAura, ISkill
     public override void Active()
     {
         float bonus = (Level - 1) * 0.1f;
+        float knockback = auraData.Knockback;
         float duration = auraData.Duration * (1 + bonus);
         float damage = auraData.Damage * (1 + bonus);
         if (spawnerAura != null)
         {
-            spawnerAura.Spawn(damage, duration, auraData.AuraPrefab.name);
+            spawnerAura.Spawn(damage, duration, auraData.AuraPrefab.name, knockback);
         }
         StartCoroutine(spawnTimer.Timer(Active, Cooldown));
     }

@@ -5,11 +5,14 @@ public abstract class AbstractBaseAura : MonoBehaviour
 {
     [Header("Aura settings")]
     protected float damage;
+    protected float knockbackForce;
+
     protected Transform target;
 
-    public virtual void Activate(Transform followTarget, float dmg, float duration)
+    public virtual void Activate(Transform followTarget, float dmg, float duration, float knockback)
     {
         target = followTarget;
+        knockbackForce = knockback;
         damage = dmg;
         if (target != null)
             transform.position = target.position;
@@ -26,6 +29,15 @@ public abstract class AbstractBaseAura : MonoBehaviour
             transform.position = target.position;
         }
     }
+    protected void TryKnockback(GameObject target)
+    {
+        if (target.TryGetComponent(out IKnockback knockback))
+        {
+            knockback.ApllyKnockback(knockbackForce);
+        }
+    }
+    protected abstract void OnHitEnemy(IDamageable enemy, GameObject obj);
+
     public virtual void Deactivate()
     {
         CancelInvoke();

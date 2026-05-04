@@ -9,5 +9,6 @@ public class AuraData : ScriptableObject
     public float Cooldown = 10f;
     public float Damage = 1.0f;
     public float Duration = 2f;
+    public float Knockback = 5f;
 
 }

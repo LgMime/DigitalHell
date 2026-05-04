@@ -882,6 +882,10 @@ MonoBehaviour:
     name: RangeEnemy
     prefab: {fileID: 8475658256265099048, guid: 5aa9cf4bf1fbf354bb8e78c1b402a6f9, type: 3}
     size: 25
+  - parentObj: {fileID: 1301407276}
+    name: Mina
+    prefab: {fileID: 5556784147789464931, guid: 7fcf76cbcab77514aafc8704a657b956, type: 3}
+    size: 5
 --- !u!4 &244458597
 Transform:
   m_ObjectHideFlags: 0
@@ -1494,7 +1498,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1632,7 +1636,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 6b4fb5097f3380c47a909e846b9a695b, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.108
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2600,7 +2604,7 @@ GameObject:
   - component: {fileID: 1026950429}
   - component: {fileID: 1026950428}
   - component: {fileID: 1026950432}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackManager
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2739,7 +2743,7 @@ GameObject:
   - component: {fileID: 1077490145}
   - component: {fileID: 1077490147}
   - component: {fileID: 1077490146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RangeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3146,7 +3150,8 @@ GameObject:
   - component: {fileID: 1127602241}
   - component: {fileID: 1127602242}
   - component: {fileID: 1127602243}
-  m_Layer: 0
+  - component: {fileID: 1127602244}
+  m_Layer: 6
   m_Name: Skills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3208,6 +3213,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ElectroShield
   auraData: {fileID: 11400000, guid: 63af2319fc7cafd4b8d5472c69239b1c, type: 2}
+--- !u!114 &1127602244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127602239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f9c386abfaf6e4d83528c058882be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinaLogic
+  auraData: {fileID: 11400000, guid: d31edcad00f56204ca832914bc974848, type: 2}
+  spriteTransform: {fileID: 0}
 --- !u!1 &1244092135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3381,7 +3400,8 @@ GameObject:
   - component: {fileID: 1351107919}
   - component: {fileID: 1351107918}
   - component: {fileID: 1351107927}
-  m_Layer: 0
+  - component: {fileID: 1351107928}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3606,6 +3626,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1351107928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351107917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16954ad8d619c7a40942e5969bf6941c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TestMina
+  targetMina: {fileID: 3223902118415848502, guid: 7fcf76cbcab77514aafc8704a657b956, type: 3}
 --- !u!1 &1358063556
 GameObject:
   m_ObjectHideFlags: 0
@@ -4078,7 +4111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1475348740}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StatsUpgradeValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4163,7 +4196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1542477902}
   - component: {fileID: 1542477903}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SkillManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4323,7 +4356,7 @@ GameObject:
   - component: {fileID: 1677598802}
   - component: {fileID: 1677598803}
   - component: {fileID: 1677598804}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: TakeExpRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4999,7 +5032,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009003228}
   - component: {fileID: 2009003229}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RangeUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

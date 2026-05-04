@@ -14,6 +14,7 @@ public class LevelData : ScriptableObject
         public float waveEnd;
         public int amountPerBurst;
         public float spawnInterval;
+        public bool isSingleSpawn;
     }
    public List<EnemyWave> enemyWaves;
 }

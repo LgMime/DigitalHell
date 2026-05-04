@@ -34,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 8475658256265099048}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.41, y: 11.19, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: -7325611690572034221, guid: 4251793b3dd594f4bb284e336b3bf7ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,7 +118,9 @@ MonoBehaviour:
   knockbackForce: 5
   attackRange: 5
   FireRate: 3
+  postShotPause: 0.5
   _enemyProjectile: {fileID: 11400000, guid: f3d565f4d502f0e46ab4d58eeb227653, type: 2}
+  _IsAttacking: 0
 --- !u!114 &7794938594700860598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +137,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   _playerTransform: {fileID: 0}
   _defaultMass: 4
+  _isFacingLeftByDefault: 1
   attackRange: 5
 --- !u!114 &2847556552261243353
 MonoBehaviour:
@@ -187,7 +190,7 @@ Animator:
   m_GameObject: {fileID: 8475658256265099048}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8cec5efade6c0f042a6a98112c73866f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -233,17 +236,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.001984179, y: 0.15175518}
+  m_Offset: {x: 0.114963055, y: -0.0066894293}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.78125, y: 0.90625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0039684, y: 0.8808437}
+  m_Size: {x: 0.588994, y: 0.9412035}
   m_EdgeRadius: 0
 --- !u!50 &3316767475761900405
 Rigidbody2D:

@@ -17,3 +17,4 @@ MonoBehaviour:
   Cooldown: 10
   Damage: 10
   Duration: 2
+  Knockback: 450

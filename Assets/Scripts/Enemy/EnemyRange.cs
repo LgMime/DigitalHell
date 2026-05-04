@@ -2,23 +2,38 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyRange : Enemy 
+public class EnemyRange : Enemy
 {
     private CircleCollider2D _attackCollider;
     public float attackRange = 5f;
     public float FireRate = 3f;
+    public float postShotPause = 0.5f;
     private float _lastFireTime;
     private Coroutine _attackRoutine;
     [SerializeField]
     private EnemyProjectileData _enemyProjectile;
+
+    private Animator _animator;
+    private Rigidbody2D _rb2d;
+    public bool _IsAttacking = false;
+
     private void Start()
     {
+        _rb2d = GetComponent<Rigidbody2D>();
         _attackCollider = GetComponentInChildren<CircleCollider2D>();
+        _animator = GetComponent<Animator>();
         if (_attackCollider != null)
         {
             _attackCollider.radius = attackRange;
         }
 
+    }
+    private void FixedUpdate()
+    {
+        if (_IsAttacking)
+        {
+            _rb2d.linearVelocity = Vector2.zero;
+        }
     }
 
 
@@ -30,6 +45,10 @@ public class EnemyRange : Enemy
             {
                 _attackRoutine = StartCoroutine(Attack());
             }
+            if (_animator != null)
+            {
+                _animator.SetBool("InChase", false);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -38,6 +57,10 @@ public class EnemyRange : Enemy
         {
             if (_attackRoutine != null)
             {
+                if (_animator != null)
+                {
+                    _animator.SetBool("InChase", true);
+                }
                 StopCoroutine(_attackRoutine);
                 _attackRoutine = null;
             }
@@ -47,13 +70,26 @@ public class EnemyRange : Enemy
     {
         while (true)
         {
-            if (Time.time >= _lastFireTime + FireRate)
+            float timeSinceLastShot = Time.time - _lastFireTime;
+
+            if (timeSinceLastShot < FireRate)
             {
-                Shoot();
-                _lastFireTime = Time.time;
+                if (_animator != null) _animator.SetBool("InChase", true);
+                _IsAttacking = false;
+                yield return new WaitForSeconds(FireRate - timeSinceLastShot);
             }
-            yield return null;
-        }       
+
+            _IsAttacking = true;
+            if (_animator != null) _animator.SetBool("InChase", false);
+
+            Shoot();
+            _lastFireTime = Time.time;
+
+            yield return new WaitForSeconds(postShotPause);
+
+            yield return new WaitForSeconds(Mathf.Max(0, FireRate - postShotPause));
+            _IsAttacking = false;
+        }
     }
 
     private void Shoot()

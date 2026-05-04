@@ -3,7 +3,7 @@
 public class SpawnerAura : MonoBehaviour
 {
 
-    public void Spawn(float damage, float duration, string prefabName)
+    public void Spawn(float damage, float duration, string prefabName, float knockback)
     {
        
         GameObject auraObj = ObjectPool.Instance.SpawnFromPool(prefabName, transform.position, Quaternion.identity);
@@ -19,7 +19,7 @@ public class SpawnerAura : MonoBehaviour
 
         if (aura != null)
         {
-            aura.Activate(this.transform, damage, duration);
+            aura.Activate(this.transform, damage, duration, knockback);
         }
         else
         {

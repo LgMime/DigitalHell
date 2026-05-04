@@ -14,24 +14,18 @@ public class Aura : AbstractBaseAura
             IDamageable damageable = other.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage(damage);
+                OnHitEnemy(damageable, other.gameObject);
             }
         }
-    }
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            IDamageable damageable = other.GetComponent<IDamageable>();
-            if (damageable != null)
-            {
-                damageable.TakeDamage(damage);
-            }
-        }
-    }
-    public override void Activate(Transform transform, float dmg, float duration)
-    {
-        base.Activate(transform, dmg, duration);
     }
 
+    public override void Activate(Transform transform, float dmg, float duration, float knockback)
+    {
+        base.Activate(transform, dmg, duration, knockback);
+    }
+    protected override void OnHitEnemy(IDamageable enemy, GameObject obj)
+    {
+        enemy.TakeDamage(damage);
+        TryKnockback(obj);
+    }
 }
