@@ -886,6 +886,10 @@ MonoBehaviour:
     name: Mina
     prefab: {fileID: 5556784147789464931, guid: 7fcf76cbcab77514aafc8704a657b956, type: 3}
     size: 5
+  - parentObj: {fileID: 1301407276}
+    name: FirstBoss
+    prefab: {fileID: 7323436183533283461, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+    size: 1
 --- !u!4 &244458597
 Transform:
   m_ObjectHideFlags: 0
@@ -2442,6 +2446,63 @@ RectTransform:
   m_AnchoredPosition: {x: 137, y: -40.6}
   m_SizeDelta: {x: 269.9412, y: 78.0459}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &1002650600
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 231340760605861597, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.465228
+      objectReference: {fileID: 0}
+    - target: {fileID: 231340760605861597, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.6242979
+      objectReference: {fileID: 0}
+    - target: {fileID: 231340760605861597, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 231340760605861597, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 231340760605861597, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 231340760605861597, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 231340760605861597, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 231340760605861597, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 231340760605861597, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 231340760605861597, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323436183533283461, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
+      propertyPath: m_Name
+      value: FirstBoss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
 --- !u!1 &1005425246
 GameObject:
   m_ObjectHideFlags: 0
@@ -3397,10 +3458,8 @@ GameObject:
   - component: {fileID: 1351107923}
   - component: {fileID: 1351107922}
   - component: {fileID: 1351107920}
-  - component: {fileID: 1351107919}
   - component: {fileID: 1351107918}
   - component: {fileID: 1351107927}
-  - component: {fileID: 1351107928}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -3445,18 +3504,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.1334964, y: -0.0072851777}
   m_Size: {x: 0.27246487, y: 0.92443895}
   m_Direction: 0
---- !u!114 &1351107919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351107917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 514c6c2465ba45649a067f1ea65bbdeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealPlayer
 --- !u!114 &1351107920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3626,19 +3673,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1351107928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1351107917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16954ad8d619c7a40942e5969bf6941c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestMina
-  targetMina: {fileID: 3223902118415848502, guid: 7fcf76cbcab77514aafc8704a657b956, type: 3}
 --- !u!1 &1358063556
 GameObject:
   m_ObjectHideFlags: 0
@@ -5363,3 +5397,4 @@ SceneRoots:
   - {fileID: 244458597}
   - {fileID: 2009465494}
   - {fileID: 298481361}
+  - {fileID: 1002650600}

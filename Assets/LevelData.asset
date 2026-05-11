@@ -16,49 +16,49 @@ MonoBehaviour:
   - waveName: Simple
     enemyPrefab: {fileID: 6477887041893445277, guid: 0ea48ee1a668bed49bd8c7ef156037ba, type: 3}
     waveStart: 0
-    waveEnd: 240
+    waveEnd: 40
     amountPerBurst: 3
     spawnInterval: 4
     isSingleSpawn: 0
   - waveName: Medium
     enemyPrefab: {fileID: 7707203798715407063, guid: 5cbb87f5d59f3de4394a2c0268dc2214, type: 3}
-    waveStart: 240
-    waveEnd: 340
+    waveStart: 50000
+    waveEnd: 50000
     amountPerBurst: 3
     spawnInterval: 4
     isSingleSpawn: 0
   - waveName: Boss
     enemyPrefab: {fileID: 7323436183533283461, guid: 263644790e46a954bb89e9328b2c0c94, type: 3}
-    waveStart: 0
-    waveEnd: 440
+    waveStart: 140
+    waveEnd: 150
     amountPerBurst: 1
     spawnInterval: 1
     isSingleSpawn: 1
   - waveName: Range
     enemyPrefab: {fileID: 8475658256265099048, guid: 5aa9cf4bf1fbf354bb8e78c1b402a6f9, type: 3}
-    waveStart: 440
-    waveEnd: 500
+    waveStart: 60
+    waveEnd: 100
+    amountPerBurst: 1
+    spawnInterval: 3
+    isSingleSpawn: 0
+  - waveName: Hard
+    enemyPrefab: {fileID: 6477887041893445277, guid: 0ea48ee1a668bed49bd8c7ef156037ba, type: 3}
+    waveStart: 190
+    waveEnd: 5000
     amountPerBurst: 3
     spawnInterval: 2
     isSingleSpawn: 0
   - waveName: Hard
-    enemyPrefab: {fileID: 6477887041893445277, guid: 0ea48ee1a668bed49bd8c7ef156037ba, type: 3}
-    waveStart: 500
+    enemyPrefab: {fileID: 7707203798715407063, guid: 5cbb87f5d59f3de4394a2c0268dc2214, type: 3}
+    waveStart: 190
     waveEnd: 5000
-    amountPerBurst: 3
+    amountPerBurst: 2
     spawnInterval: 3
     isSingleSpawn: 0
   - waveName: Hard
-    enemyPrefab: {fileID: 7707203798715407063, guid: 5cbb87f5d59f3de4394a2c0268dc2214, type: 3}
-    waveStart: 500
+    enemyPrefab: {fileID: 8475658256265099048, guid: 5aa9cf4bf1fbf354bb8e78c1b402a6f9, type: 3}
+    waveStart: 190
     waveEnd: 5000
-    amountPerBurst: 3
-    spawnInterval: 3
-    isSingleSpawn: 0
-  - waveName: Hard
-    enemyPrefab: {fileID: 7707203798715407063, guid: 5cbb87f5d59f3de4394a2c0268dc2214, type: 3}
-    waveStart: 340
-    waveEnd: 5000
-    amountPerBurst: 3
+    amountPerBurst: 1
     spawnInterval: 3
     isSingleSpawn: 0

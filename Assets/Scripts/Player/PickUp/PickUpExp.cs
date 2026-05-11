@@ -7,13 +7,14 @@ public class PickUpExp : MonoBehaviour
 
         if (collision.CompareTag("Exp"))
         {
-            LvlManager.Instance.AddExp(5);
+            LvlManager.Instance.AddExp(15);
 
             Destroy(collision.gameObject);
         }
         if (collision.CompareTag("Heal"))
         {
-            HealPlayer.Instance.Heal(20);
+            // Обращайся к тому скрипту, который РЕАЛЬНО управляет жизнями
+            PlayerHealth.Instance.Heal(5);
             Destroy(collision.gameObject);
         }
     }

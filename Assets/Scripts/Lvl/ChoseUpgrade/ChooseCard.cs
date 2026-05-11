@@ -5,7 +5,7 @@ public class ChooseCard : MonoBehaviour
 {
 
     public int HealthAmount;
-    public float MaxHealth;
+    public int MaxHealth;
     public float Range;
     public float ExpRange;
     public float MoveSpeed;

@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour
 
     private void OnDestroy()
     {
-        // 4. ОБЯЗАТЕЛЬНО отписываемся при уничтожении, иначе будут ошибки
+        // 4. РћР±СЏР·Р°С‚РµР»СЊРЅРѕ РѕС‚РїРёСЃС‹РІР°РµРјСЃСЏ РїСЂРё СѓРЅРёС‡С‚РѕР¶РµРЅРёРё, РёРЅР°С‡Рµ Р±СѓРґСѓС‚ РѕС€РёР±РєРё
         if (PlayerHealth.Instance != null)
             PlayerHealth.Instance.OnHealthChanged -= UpdateHealthUI;
 
@@ -26,25 +26,25 @@ public class HealthBar : MonoBehaviour
 
     private void InitializeBar()
     {
-        // Защита от ошибки "Invalid AABB" (деление на ноль)
-        float percent = (PlayerHealth.Instance.max > 0) ? PlayerHealth.Instance.current / PlayerHealth.Instance.max : 0f;
+        // Р—Р°С‰РёС‚Р° РѕС‚ РѕС€РёР±РєРё "Invalid AABB" (РґРµР»РµРЅРёРµ РЅР° РЅРѕР»СЊ)
+        float percent = (PlayerHealth.Instance.max > 0) ? (float)PlayerHealth.Instance.current / PlayerHealth.Instance.max : 0f;
 
         UpdateHealthUI(percent);
     }
 
-    // Этот метод вызывается событием
+    // Р­С‚РѕС‚ РјРµС‚РѕРґ РІС‹Р·С‹РІР°РµС‚СЃСЏ СЃРѕР±С‹С‚РёСЏРјРё  
     private void UpdateHealthUI(float percent)
     {
         _healthBarImage.fillAmount = Mathf.Clamp01(percent);
-        // 1. Обновляем картинку
-        // Дополнительная защита: если percent сломался (стал NaN), ставим 0
+        // 1. РћР±РЅРѕРІР»СЏРµРј РєР°СЂС‚РёРЅРєСѓ
+        // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ Р·Р°С‰РёС‚Р°: РµСЃР»Рё percent СЃР»РѕРјР°Р»СЃСЏ (СЃС‚Р°Р» NaN), СЃС‚Р°РІРёРј 0
         if (_healthText != null && PlayerHealth.Instance != null)
         {
             _healthText.text =
                 $"{PlayerHealth.Instance.current:0} / {PlayerHealth.Instance.max:0}";
         }
 
-        // 2. Обновляем Текст (если он привязан в инспекторе)
+        // 2. РћР±РЅРѕРІР»СЏРµРј РўРµРєСЃС‚ (РµСЃР»Рё РѕРЅ РїСЂРёРІСЏР·Р°РЅ РІ РёРЅСЃРїРµРєС‚РѕСЂРµ)
         if (_healthText != null && PlayerHealth.Instance != null)
         {
             float current = PlayerHealth.Instance.current;

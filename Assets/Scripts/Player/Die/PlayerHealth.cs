@@ -28,6 +28,7 @@ public class PlayerHealth : BaseHealth
         currentHealth = maxHealth;
     }
 
+
     public override void TakeDamage(float damage)
     {
         if (_isInvincible)
@@ -58,6 +59,13 @@ public class PlayerHealth : BaseHealth
         spriteRenderer.color = Color.white;
         _isInvincible = false;
 
+    }
+    public void Heal(int heal)
+    {
+        currentHealth += heal;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
+        NotifyHealthChanged();
+        Debug.Log($"[HEAL] ХП восстановлено: {currentHealth}");
     }
 
     protected override void Die()

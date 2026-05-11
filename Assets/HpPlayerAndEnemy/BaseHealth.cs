@@ -2,17 +2,18 @@
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public abstract class BaseHealth: MonoBehaviour, IDamageable
+public abstract class BaseHealth : MonoBehaviour, IDamageable
 {
-    protected float maxHealth;
-     protected float currentHealth;
+    protected int maxHealth;
+    protected int currentHealth;
 
 
-    public float current => currentHealth;
-    public float max => maxHealth;
+    public int current => currentHealth;
+    public int max => maxHealth;
 
     public event System.Action<float> OnHealthChanged;
     public event System.Action OnDeath;
+
 
     protected virtual void OnEnable()
     {
@@ -22,17 +23,18 @@ public abstract class BaseHealth: MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(float damage)
     {
-        if(currentHealth <= 0) return;
+        if (currentHealth <= 0) return;
 
-        currentHealth -= damage;
-        OnHealthChanged?.Invoke(currentHealth / maxHealth);
+        currentHealth -= (int)damage;
+
+        OnHealthChanged?.Invoke((float)currentHealth / maxHealth);
 
         if (currentHealth <= 0)
         {
             Die();
         }
     }
-    public void SetMaxHealth(float newMax, bool healToFull = true)
+    public void SetMaxHealth(int newMax, bool healToFull = true)
     {
         maxHealth = newMax;
         if (healToFull)
@@ -43,7 +45,7 @@ public abstract class BaseHealth: MonoBehaviour, IDamageable
     }
     protected void NotifyHealthChanged()
     {
-        float percent = maxHealth > 0f ? currentHealth / maxHealth : 0f;
+        float percent = (maxHealth > 0f ? (float)currentHealth / maxHealth : 0f);
         OnHealthChanged?.Invoke(percent);
     }
     protected virtual void Die()

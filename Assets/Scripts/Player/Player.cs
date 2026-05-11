@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 
     [Header("Stats")]
     public int Health = 15;
-    public float MaxHealth = 15;
+    public int MaxHealth = 15;
     public float Range = 2.0f;
     public float ExpRange = 3.0f;
     public float MoveSpeed = 5.0f;

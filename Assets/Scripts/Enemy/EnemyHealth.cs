@@ -32,7 +32,7 @@ public class EnemyHealth : BaseHealth
        
         if(_enemyStats != null)
         {
-            maxHealth = _enemyStats.health;
+            maxHealth = (int)_enemyStats.health;
         }
         base.OnEnable();
         ResetEnemyState();
